@@ -1,0 +1,17 @@
+class Solution {
+public:
+    string convertToTitle(int n) {
+        string ans="";
+       while(n){
+      int k=(n%26?n%26:26);
+      ans.push_back('A'+(k)-1);
+       n/=26;
+     if(k==26){
+      n--;
+   }
+  }
+reverse(ans.begin(),ans.end());
+return ans;
+
+    }
+};
