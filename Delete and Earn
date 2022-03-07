@@ -1,0 +1,18 @@
+class Solution {
+public:
+    int deleteAndEarn(vector<int>& nums) {
+        vector<int> sums(10001);
+        int max_num = 0;
+        for(int num: nums){
+            sums[num] += num;
+            max_num = max(max_num, num);
+        }
+        int pick = 0, skip = 0;
+        for(int i = 1; i <= max_num; ++i){
+            int max_pts = max(pick, skip);
+            pick = skip + sums[i];
+            skip = max_pts;
+        }
+        return max(pick, skip);
+    }
+};
