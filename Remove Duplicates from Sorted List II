@@ -1,0 +1,22 @@
+if(head == NULL || head->next == NULL){
+            return head;
+        }
+        //create a dummy node to avoid the case of head value getting repeated which is difficult to handle
+        struct ListNode *res = new struct ListNode(0);
+        res->next = head;
+        
+        struct ListNode *cur = res;
+        while(cur->next && cur->next->next){
+            //if the next value is same as its next value
+            if(cur->next->val == cur->next->next->val){
+                int val = cur->next->val;
+                //move forward if same value is repeating
+                while(cur->next && cur->next->val == val){
+                    cur->next = cur->next->next;
+                }
+            }else{
+                cur = cur->next;
+            }
+        }
+        //return next of the dummy node
+        return res->next;
