@@ -1,0 +1,15 @@
+class Solution {
+public:
+    ListNode* middleNode(ListNode* head) {
+        ListNode *mid = head, *next = head;
+        for (int cnt = 0; next != NULL; next = next->next) {
+            cnt++;
+            if (cnt % 2 == 0) {
+                mid = mid->next;
+            }
+        }
+        return mid;
+        
+         
+    }
+};
