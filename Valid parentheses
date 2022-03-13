@@ -1,0 +1,14 @@
+if(s.length() == 1) return false;
+        map<char, char>  match{{'(', ')'}, {'{','}'},{'[',']'}};
+        stack<char> st;
+        for(const char c:s){
+            if(st.empty() || c != st.top()){
+                st.push(match[c]);
+            }else{
+                st.pop();
+            }
+        }
+        return st.empty();
+        
+    }
+};
