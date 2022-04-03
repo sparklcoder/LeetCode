@@ -1,0 +1,26 @@
+class Solution {
+public:
+    int firstBadVersion(int n) {
+        int l = 0;
+        int r = n-1;
+        int fistBadOne = n;
+		// Typical Binary Search loop
+        while(l <= r) 
+        {
+            int mid = l+(r-l)/2; // This is to avoid overflows
+            if (isBadVersion(mid)) // if the bad version is found, go left
+            {
+                fistBadOne = mid; // Save the latest bad version. Eventually this will have the first bad vesion
+                r = mid-1;
+            }
+            else // If the bad version is not found, go right
+            {
+               l = mid+1;
+            }
+             
+        }
+        return fistBadOne;
+    
+        
+    }
+};
